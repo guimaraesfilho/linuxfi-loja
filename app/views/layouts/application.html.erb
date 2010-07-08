@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title>Loja - <%= @titulo %>    </title>
+
+    
+
+  </head>
+  <body>
+    <h1>Loja - <%=@titulo %></h1>
+
+    <h1> <%= yield :cabecalho %> | loja </h1>
+
+    <%= yield %>
+  </body>
+</html>
