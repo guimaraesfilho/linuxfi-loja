@@ -12,15 +12,19 @@
 ActiveRecord::Schema.define(:version => 20100708002921) do
 
   create_table "itens", :force => true do |t|
-    t.integer "produto_id", :null => false
-    t.integer "pedido_id",  :null => false
-    t.integer "quantidade", :null => false
+    t.integer  "produto_id", :null => false
+    t.integer  "pedido_id",  :null => false
+    t.integer  "quantidade", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "itens", ["pedido_id"], :name => "index_itens_on_pedido_id"
 
   create_table "pedidos", :force => true do |t|
-    t.string "estado", :default => "carrinho"
+    t.string   "estado",     :default => "carrinho"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "produtos", :force => true do |t|
