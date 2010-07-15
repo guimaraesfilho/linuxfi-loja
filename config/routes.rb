@@ -2,7 +2,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.root :controller => 'produtos', :action => 'index' #direciona pra raiz / ou seja retira o tipo "phpinfo();"
   map.resources :produtos
-  map.resources :itens
+  map.resources :itens, :collection => { :atualizar_pedido => :post }
 
   # The priority is based upon order of creation: first created -> highest priority.
 
