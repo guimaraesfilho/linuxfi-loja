@@ -7,12 +7,7 @@
 
     <h1> <%= yield :cabecalho %> | loja </h1>
 
-    <% unless flash.blank? %>
-      <% flash.each do |key,value| %>
-        <p class="flash_<%= key %>"> <%= value %> </p>
-      <%end%>
-    <% end %>
-
+    <%= render_flash %>
 
     <ul>
       <li> <%= link_to 'Produtos', produtos_path %>  </li>

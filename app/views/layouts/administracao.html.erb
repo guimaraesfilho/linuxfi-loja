@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>Loja <%= @titulo %>    </title>
+
+  </head>
+  <body>
+
+    <h1> <%= yield :cabecalho %> | loja </h1>
+
+    <%= render_flash %>
+
+
+    <%= yield %>
+  </body>
+</html>
+

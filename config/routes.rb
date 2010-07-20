@@ -4,6 +4,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :produtos
   map.resources :itens, :collection => { :atualizar_pedido => :post }
 
+  map.namespace :admin do |admin|
+    admin.resources :produtos
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
