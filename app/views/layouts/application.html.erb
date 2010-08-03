@@ -9,14 +9,7 @@
 
     <%= render_flash %>
 
-    <ul>
-      <li> <%= link_to 'Produtos', produtos_path %>  </li>
-      <% unless pedido_atual.blank? %>
-        <li>
-          <%= link_to( "Veja o seu carrinho ", itens_path ) %>
-        </li>
-      <% end %>
-    </ul>
+    <%= render "compartilhados/cabecalho" %>
         
     <%= yield %>
   </body>

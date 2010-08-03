@@ -4,23 +4,27 @@ class Usuario < ActiveRecord::Base
 
 
   validates_uniqueness_of :email
-  validadtes_presence_of :nome
+  validates_presence_of :nome
 
   validates_acceptance_of :termos_e_condicoes, :if => :new_record?
-  validadtes_presence_of :senha_em_hash, :if => :senha_necessaria?
+  validates_presence_of :senha_em_hash, :if => :senha_necessaria?
   validates_confirmation_of :senha, :if => :senha_necessaria?
   validates_length_of :senha, :within => 4..40, :if => :senha_necessaria?
 
   attr_accessor :senha, :termos_e_condicoes
 
+  attr_protected :administrador, :senha_em_hash #So atribui de forma DIRETA
+
   before_validation :hashear_senha
 
-  def senha_necessara?
-    self.hash_em_senha.blank? || !self.senha.blank?
+  after_create :enviar_email
+
+  def senha_necessaria?
+    self.senha_em_hash.blank? || !self.senha.blank?
   end
 
   def senha_correta?(_senha)
-    self.hash_em_senha == Usuario.hashear(_senha, self.salt)
+    self.senha_em_hash == Usuario.hashear(_senha, self.salt)
   end
 
   class << self #Metodo de bloco Estatico
@@ -50,5 +54,8 @@ class Usuario < ActiveRecord::Base
     self.senha_em_hash = Usuario.hashear(self.senha, self.salt)
   end
 
+  def enviar_email
+    UsuarioMailer.deliver_cadastro(self)
+  end
 
 end

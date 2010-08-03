@@ -5,7 +5,7 @@ class CriarUsuarios < ActiveRecord::Migration
       t.string :nome, :null => false
       t.string :email, :null => false
       t.boolean :administrador, :default => false
-      t.string :hash_em_senha
+      t.string :senha_em_hash
       t.string :salt
       t.datetime :ultimo_acesso_em
       t.timestamps

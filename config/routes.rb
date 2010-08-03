@@ -3,6 +3,8 @@ ActionController::Routing::Routes.draw do |map|
   map.root :controller => 'produtos', :action => 'index' #direciona pra raiz / ou seja retira o tipo "phpinfo();"
   map.resources :produtos
   map.resources :itens, :collection => { :atualizar_pedido => :post }
+  map.resource  :sessao
+  map.resource  :usuario
 
   map.namespace :admin do |admin|
     admin.resources :produtos
