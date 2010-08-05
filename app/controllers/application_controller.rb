@@ -17,14 +17,6 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def pedido_atual
-    unless @pedido_atual
-      @pedido_atual = session[:pedido_id].blank? ?
-        Pedido.new : Pedido.find_by_id(session[:pedido_id])
-    end
-    @pedido_atual
-  end
-
   def load_page
     @page = params[:page] || 1
     @per_page = params[:per_page] || 10

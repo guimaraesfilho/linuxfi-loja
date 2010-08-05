@@ -27,6 +27,10 @@ class Usuario < ActiveRecord::Base
     self.senha_em_hash == Usuario.hashear(_senha, self.salt)
   end
 
+  def pedido_atual
+    @pedido ||= Pedido.find_or_create_by_usuario_id_and_estado( self.id, "carrinho")
+  end
+
   class << self #Metodo de bloco Estatico
 
     def hashear(senha, salt)

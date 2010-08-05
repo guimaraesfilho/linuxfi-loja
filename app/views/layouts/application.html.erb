@@ -1,7 +1,14 @@
 <html>
   <head>
-    <title>Loja <%= @titulo %>    </title>
+    <title>
+      <%= yield :cabecalho %>  | LOJA
+    </title>
 
+    <%= javascript_include_tag "jquery",
+        "jquery-ui",
+        "jquery-form",
+        "jrails",
+        "application"%>
   </head>
   <body>
 
