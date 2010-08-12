@@ -2,8 +2,11 @@
   Listagem de Produtos
 <% end %>
 
-
-
+<% form_tag produtos_path, :method => :get do %>
+  Digite sua busca:
+  <%= text_field_tag :q, params[:q] %>
+  <%= submit_tag "Buscar" %>
+<% end %>
 
 <% unless @produtos.blank? %>
 
@@ -32,6 +35,7 @@
                 :style => "display:none"
             %>
             <%end%>
+              | <%= link_to( "Visualizar", produto_path( produto ) ) %>
             </td>
          </tr>
     <% end %>
